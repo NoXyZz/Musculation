@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carte Interactive Salle de Sport</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link href='https://fonts.googleapis.com/css?family=ADLaM Display' rel='stylesheet'>
+    <script src="https://unpkg.com/leaflet-touchzoom/dist/leaflet.touchzoom.min.js"></script>
+
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            background-color: #333; /* Gris foncé */
+        }
+
+        #map-container {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #333; /* Gris foncé */
+        }
+
+        #salle-de-sport-image {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+        /* Style personnalisé pour les popups */
+        .leaflet-popup-content-wrapper {
+            background-color: #279a3c; /* vert clair */
+        }
+
+        .machine-name {
+            padding: 4px; /* Espacement autour du texte */
+            margin-bottom: 4px; /* Marge en bas du nom de la machine */
+            font-family: 'ADLaM Display';font-size: 22px;
+        }
+
+        .popup-image {
+            border-radius: 8px; /* Bord arrondi pour les images dans le popup */
+            margin : 4px;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="map-container">
+        <div id="salle-de-sport-image"></div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        var salleDeSport = L.map('map-container').setView([0, 0], 1);
+
+        /*c'est ici qu'on change le plan*/
+        L.imageOverlay('Sans-titre-2024-01-20-1516.svg', [[0, 0], [100, 100]]).addTo(salleDeSport);
+
+        // MARQUEUR 1
+
+
+        
+                    // 1 icone pour marqueur
+
+        var machine1Icon = L.divIcon({ 
+            className: 'a',
+            html: '<img src="icons8-tapis-de-course-64.png" width="64" height="64" alt="Machine 1">' // --> ici
+        });
+                    // Image(s) dans le popup
+        var machine1 = L.marker([72.5, 75], { icon: machine1Icon }).addTo(salleDeSport);
+        machine1.bindPopup("<div class='machine-name'>Machine 1</div><br><div style='display: flex;''><img class='popup-image' src='Flateyri_-_Aug_2022_08.jpg' style='width:auto; height:400px;'><img class='popup-image' src='Flateyri_-_Aug_2022_08.jpg' style='width:auto; height:400px;'><img class='popup-image' src='Flateyri_-_Aug_2022_08.jpg' style='width:auto; height:400px;'></div><br>Commentaire sur la machine 1 assez lon dmmoquy opmuydz mou hyuo mo uyu km luh uh uh uh upmouuuuuuuuuuuuuuu yumkkjh mku  m  km u u hym u  um u  y oim ui y um   uy", { maxWidth: '100vw' });
+
+        /*
+        <div class='machine-name'>Machine 1</div>
+        <br>
+        <div style='display: flex;''>
+
+            <img class='popup-image' src='Flateyri_-_Aug_2022_08.jpg' style='width:auto; height:400px;'>
+            ...
+        </div>
+
+        */
+
+
+        // MARQUEUR 2
+
+        var machine2Icon = L.divIcon({ 
+            className: 'a',
+            html: '<img src="deroule-lat.png" width="64" height="64" alt="Machine 1">'
+
+        });
+
+        var machine2 = L.marker([60, 60], { icon: machine2Icon }).addTo(salleDeSport);
+        machine2.bindPopup("<div class='machine-name'>Machine 2</div><br><div style='display: flex;''><img src='Triceps.svg' style='width:auto; height:400px;'><img src='Triceps.svg' style='width:auto; height:400px;'><img src='Triceps.svg' style='width:auto; height:400px;'></div><br>Commentaire sur la machine 2 dddddddddddddddddddddddddddddddddddddd\ndddddddddddddddddddddddddddddddddddddddddd\ndddddddddddddddddddddddd", { maxWidth: '60vw' });
+    
+
+
+    </script>
+
+    <style>
+        .custom-div-icon {
+            background-color: transparent;
+            border: none;
+        }
+
+    </style>
+</body>
+</html>
